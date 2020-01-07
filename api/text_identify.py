@@ -13,7 +13,6 @@ _process_url = partial(_process_url, BASE_HOST)
 
 
 class ApiText(ApiBase):
-
 	"""
 	文本SDK接口
 	"""
@@ -28,7 +27,3 @@ class ApiText(ApiBase):
 		:return: 响应结果
 		"""
 		return self._request(self._emotion_filter_url, json=json)
-
-
-
-

@@ -7,3 +7,9 @@ MISS_PARAM = (10001, "缺少参数")
 
 # 上传文件错误（客户端）
 UPLOAD_INTERNAL_ERR = (10004, "上传文件不合法")
+
+ESTABLISH_TIMEOUT = (10005, "客户端连接超时")
+
+OTHER_ERROR = (10006, "客户端未知错误")
+
+RESP_TIMEOUT = (10007, "服务端响应超时")

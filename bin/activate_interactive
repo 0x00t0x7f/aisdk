@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Created by sam lee
+
+SDKDIR=`dirname $0`
+export PYTHONSTARTUP="$SDKDIR/.ai-sdk.py"
+echo "# -*- coding: utf-8 -*-" > $PYTHONSTARTUP
+if [[ $SDKDIR = '.' ]]; then
+    IMPORTPATH=$(dirname `pwd $SDKDIR`)
+elif [[ $SDKDIR = './bin' ]]; then
+    IMPORTPATH=`pwd $SDKDIR`
+else
+    FULLPATH=`find / -name .ai-sdk.py`
+    IMPORTPATH=$(dirname `dirname $FULLPATH`)
+fi
+export PYTHONPATH=$PYTHONPATH:$IMPORTPATH
+
+echo "print(u'''" >> $PYTHONSTARTUP
+if [ -f "$SDKDIR/.ai-sdk.txt" ]; then
+    cat "$SDKDIR/.ai-sdk.txt" >> $PYTHONSTARTUP
+    echo
+else
+    echo "------  欢迎使用AI SDK ------" >> $PYTHONSTARTUP
+fi
+echo "''')" >> $PYTHONSTARTUP
+
+echo "import sys" >> $PYTHONSTARTUP
+echo "sys.path.insert(0, '$IMPORTPATH')" >> $PYTHONSTARTUP
+echo "from api import *" >> $PYTHONSTARTUP
+echo "sys.ps1 = 'ai-sdk >>>'" >> $PYTHONSTARTUP
+python
