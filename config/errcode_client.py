@@ -13,3 +13,7 @@ ESTABLISH_TIMEOUT = (10005, "客户端连接超时")
 OTHER_ERROR = (10006, "客户端未知错误")
 
 RESP_TIMEOUT = (10007, "服务端响应超时")
+
+DISAPPROVED_METHOD = (10011, "该方法不被赞成使用")
+
+REMOTE_SERVER_UNREACHABLE = (10012, "远程服务不可用")
